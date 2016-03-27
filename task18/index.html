@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>18</title>
+	<style>
+	span {
+		display: inline-block;
+		padding: 10px;
+		background: #999;
+		margin-right: 20px;
+		color: #fff;
+	}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="text" id="input">
+		<input type="button" value="unshift" id="unshift">
+		<input type="button" value="push" id="push">
+		<input type="button" value="shift" id="shift">
+		<input type="button" value="pop" id="pop">
+	</div>
+	<hr>
+	<div id="wrap"></div>
+	<script>
+	var input = document.querySelector('#input')
+	var unshiftEv = document.querySelector('#unshift')
+	var pushEv = document.querySelector('#push')
+	var shiftEv = document.querySelector('#shift')
+	var popEv = document.querySelector('#pop')
+	var wrap = document.querySelector('#wrap')
+
+	var arr = [1,20,300,4000,5000]
+	function render() {
+		wrap.innerHTML = ''
+		arr.map(function(item) {
+			var span = document.createElement('span')
+			span.innerHTML = item
+			wrap.appendChild(span)
+		})
+	}
+	render()
+
+	shiftEv.onclick = function() {
+		arr.shift();
+		render()
+	}
+	popEv.onclick = function() {
+		arr.pop();
+		render()
+	}
+	unshiftEv.onclick = function() {
+		arr.unshift(input.value);
+		input.value = ''
+		render()
+	}
+	pushEv.onclick = function() {
+		arr.push(input.value);
+		input.value = ''
+		render()
+	}
+	</script>
+</body>
+</html>
