@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>20</title>
+	<style>
+	span {
+		display: inline-block;
+		padding: 10px;
+		background: #999;
+		margin-right: 20px;
+		color: #fff;
+	}
+	span.active {
+		background: #f00;
+		color: #fff;
+	}
+	</style>
+</head>
+<body>
+	<div>
+		<textarea name="input" id="input" cols="30" rows="10"></textarea>
+		<input type="button" value="unshift" id="unshift">
+		<input type="button" value="push" id="push">
+		<input type="button" value="shift" id="shift">
+		<input type="button" value="pop" id="pop">
+		<input type="text" id="search">
+		<input type="button" value="search" id="search-btn">
+	</div>
+	<hr>
+	<div id="wrap"></div>
+	<script>
+	var input = document.querySelector('#input')
+	var unshiftEv = document.querySelector('#unshift')
+	var pushEv = document.querySelector('#push')
+	var shiftEv = document.querySelector('#shift')
+	var popEv = document.querySelector('#pop')
+	var wrap = document.querySelector('#wrap')
+	var search = document.querySelector('#search')
+	var searchBtn = document.querySelector('#search-btn')
+
+	var arr = []
+	function render() {
+		wrap.innerHTML = ''
+		arr.map(function(item) {
+			var span = document.createElement('span')
+			span.innerHTML = item.text
+			if(item.active) span.setAttribute('class', 'active')
+			wrap.appendChild(span)
+		})
+	}
+	render()
+
+	shiftEv.onclick = function() {
+		arr.shift();
+		render()
+	}
+	popEv.onclick = function() {
+		arr.pop();
+		render()
+	}
+	unshiftEv.onclick = function() {
+		var source = input.value
+		var value = source.split(',')
+		value.map(function(item) {
+			arr = ([{'text': item}]).concat(arr)
+		})
+		input.value = ''
+		render()
+	}
+	pushEv.onclick = function() {
+		var source = input.value
+		var value = source.split(',')
+		value.map(function(item) {
+			arr = arr.concat([{text: item}])
+		})
+		input.value = ''
+		render()
+	}
+	searchBtn.onclick = function() {
+		var value = search.value
+		arr.map(function(item) {
+			item.active = ''
+			if(item.text.indexOf(value) > -1) {
+				item['active'] = 'active'
+			}
+		})
+		render()
+	}
+	</script>
+</body>
+</html>

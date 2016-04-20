@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title>task32-实现表单自动生成工厂</title>
+	<script type="text/javascript" src="./index.js"></script>
+	<style type="text/css">
+		.choice {
+			display: block;
+			width: 500px;
+			margin: 10px auto;
+		}
+		.form-choice,
+		.style-choice {
+			margin-bottom: 10px;
+		}
+		#geneBtn {
+			width: 100px;
+			height: 30px;
+		}
+		#formList {
+			width: 400px;
+			margin: 30px auto;
+		}
+		.wraper {
+			float: right;
+			margin-bottom: 20px;
+
+		}
+		.wraper label {
+			font-size: 18px;
+		}
+		.wraper input {
+			margin-left: 10px;
+			width: 300px;
+			height: 20px;
+		}
+		.wraper span {
+			display: block;
+			margin-left: 100px;
+			font-size: 14px;
+			color: #999;
+		}
+		.submitBtn {
+			width: 80px;
+			height: 30px;
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<form class="choice">
+			<!-- 选择要生成的表单 -->
+			<div class="form-choice">
+				<label>选择要创建的表单</label>
+				<input type="checkbox" name="formchoice" value="name">名称</input>
+				<input type="checkbox" name="formchoice" value="password">密码</input>
+				<input type="checkbox" name="formchoice" value="email">邮箱</input>
+				<input type="checkbox" name="formchoice" value="phone">号码</input>
+			</div>
+			<!-- <div class="style-choice">
+				<label>选择表单的样式</label>
+				<input type="radio" name="stylechoice">样式一</input>
+				<input type="radio" name="stylechoice">样式二</input>
+			</div> -->
+			<input type="button" id="geneBtn" value="生成表单"></input>
+		</form>
+		<!-- 生成的表单 -->
+		<form id="formList">
+		</form>
+	</div>
+</body>
+</html>
